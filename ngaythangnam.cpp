@@ -27,7 +27,7 @@ int main() {
 	else 
 		{
 			if (yy==2) {
-				if ( dd > 29) 
+				if ( dd > 28) 
 					cout << "day khong phai la ngay thang nam";
 				else 
 					cout << "ngay " << dd << " " <<"thang " << yy << " " <<"nam " << mmmm;
