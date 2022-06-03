@@ -45,15 +45,9 @@ void find(List listX, List listY);
 void find1(List listX, List listY);
 int main() {
 	
-	List Lx, Ly;
-	int select, seclectMain;
-	_setmode(_fileno(stdout), _O_U8TEXT); 
-    _setmode(_fileno(stdin), _O_U8TEXT); 
-	for (int i = 1; i <= 128; i++) {
-		wprintf(L"%d\t%c\n", i, i);
-	}
-#if 0
-	box(50, 5, 50, 2, 11, 140, L"\tPBL1: Dự án lập trình tính toán");
+
+#if 1
+	
 	/*wprintf(L"______________________________ PBL1: Dự án lập trình tính toán ______________________________\n");*/
 	wprintf(L"\nTên đề tài: 910\n");
 	wprintf(L"Người thực hiện:\n");
