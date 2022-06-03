@@ -48,17 +48,17 @@ int main() {
 
 #if 1
 	
-	/*wprintf(L"______________________________ PBL1: Dự án lập trình tính toán ______________________________\n");*/
-	wprintf(L"\nTên đề tài: 910\n");
-	wprintf(L"Người thực hiện:\n");
-	wprintf(L"\tPhan Thành Ngân\n");
-	wprintf(L"\tNguyễn Ngọc Huy\n");
+	/*wprintf(L"______________________________ PBL1: DU AN LAP TRINH TINH TOAN ______________________________\n");*/
+	wprintf(L"\nTen de tai: 910\n");
+	wprintf(L"Nguoi thuc hien:\n");
+	wprintf(L"\tPhan Thanh Ngan\n");
+	wprintf(L"\tNguyen Ngoc Huy\n");
 	wprintf(L"_____________________________________________________________________________________________\n\n");
 	while (1)
 	{
-		wprintf(L"Bài toán 1: Xây dựng biểu thức dạng phi tuyến tính f(x)=ae^bx bằng phương pháp bình phương tối thiểu \n");
-		wprintf(L"Bài toán 2: Xây dựng biểu thức dạng phi tuyến tính f(x)=ax^b bằng phương pháp bình phương tối thiểu.\n"); 
-		wprintf(L"Thoát\n");
+		wprintf(L"Bai toan 1: Xay dung bieu thuc dang phi tuyen tinh f(x)=ae^bx bang phuong phap binh phuong toi thieu \n");
+		wprintf(L"Bai toan 2: Xay dung bieu thuc dang phi tuyen tinh f(x)=ax^b bang phuong phap binh phuong toi thieu.\n"); 
+		wprintf(L"Thoat\n");
 		wscanf_s(L"%d", &seclectMain);
 
 		switch (seclectMain)
@@ -73,10 +73,10 @@ int main() {
 				case 1:
 					readListFromFile(&Lx, &Ly);
 					if (checkList(Lx, Ly) == 0) {
-						wprintf(L"\nLỗi dữ liệu trong file\n");
+						wprintf(L"\nLoi du lieu trong file\n");
 					}
 					else {
-						wprintf(L"\nĐọc dữ liệu trong file thành công\n");
+						wprintf(L"\nDoc du lieu trong file thanh cong\n");
 					}
 					display(Lx, Ly);
 					break;
@@ -96,7 +96,7 @@ int main() {
 				case 6:
 					break;
 				default:
-					wprintf(L"Chức năng bạn chọn không hợp lệ. Vui lòng nhập lại\n\n");
+					wprintf(L"Chuc nang ban chon khong hop le. Vui long nhap lai\n\n");
 					break;
 				}
 			} while (select != 6);
@@ -111,10 +111,10 @@ int main() {
 				case 1:
 					readListFromFile(&Lx, &Ly);
 					if (checkList(Lx, Ly) == 0) {
-						wprintf(L"\nLỗi dữ liệu trong file\n");
+						wprintf(L"\nLoi du lieu trong file\n");
 					}
 					else {
-						wprintf(L"\nĐọc dữ liệu trong file thành công\n");
+						wprintf(L"\nDoc du lieu trong file thanh cong\n");
 					}
 					display(Lx, Ly);
 					break;
@@ -133,7 +133,7 @@ int main() {
 				case 6:
 					break;
 				default:
-					wprintf(L"Chức năng bạn chọn không hợp lệ. Vui lòng nhập lại\n\n");
+					wprintf(L"Chuc nang ban chon khong hop le. Vui long nhap lai\n\n");
 					break;
 				}
 			} while (select != 6);
@@ -173,15 +173,15 @@ void readListFromKeyboard(List* listX, List* listY) {
 	makeNull_List(listX);
 	makeNull_List(listY);
 	lb x, y;
-	wprintf(L"Nhập n số lượng các phần tử của x và y: ");
+	wprintf(L"Nhap n so luong cac phan tu cua x va y: ");
 	wscanf_s(L"%d", &n);
 	for (int i = 0; i < n; i++) {
-		wprintf(L"Nhập phần tử thứ %d của x:\t", i + 1);
+		wprintf(L"Nhap phan tu thu %d cua x:\t", i + 1);
 		wscanf_s(L"%Lf", &x);
 		insertList(x, endList(*listX), listX);
 	}
 	for (int i = 0; i < n; i++) {
-		wprintf(L"Nhập phần tử thứ %d của y:\t", i + 1);
+		wprintf(L"Nhap phan tu thu %d cua y:\t", i + 1);
 		wscanf_s(L"%Lf", &y);
 		insertList(y, endList(*listY), listY);
 	}
@@ -195,7 +195,7 @@ void readListFromFile(List* listX, List* listY) {
 	do
 	{
 		wchar_t name[50];
-		wprintf(L"Nhập đường dẫn hoặc tên file (phải có định dạng *.INP) \n");
+		wprintf(L"Nhap duong dan hoac ten file (phai co dinh dang *.INP) \n");
 		getwchar();
 		fgetws(name, sizeof(name), stdin);
 		removeTheLastCharacter(name);
@@ -241,34 +241,34 @@ void writeTheAnswerToTheFile(List listX, List listY) {
 	find(listX, listY);
 	wchar_t name[100];
 	getwchar();
-	wprintf(L"\nNhập đường dẫn hoặc tên file cần lưu kết quả:\n");
+	wprintf(L"\nNhap duong dan hoac ten file can luu ket qua:\n");
 	fgetws(name, sizeof(name), stdin);
 	removeTheLastCharacter(name);
 	FILE* myFile;
 	myFile = _wfopen(name, L"w+");
 	if (myFile == NULL) {
-		wprintf(L"\nLỗi ghi file\n");
+		wprintf(L"\nLoi ghi file\n");
 		exit(1);
 	}
 	fwprintf(myFile, L"%c = %0.3Lf\t%c = %0.3Lf", 'a', pow(10, X[0]), 'b', X[1]);
 	fclose(myFile);
-	wprintf(L"\nĐã ghi file thành công\n");
+	wprintf(L"\nDa ghi file thcongcong\n");
 }
 void writeTheAnswerToTheFile1(List listX, List listY) {
 	wchar_t name[100];
 	getwchar();
-	wprintf(L"\nNhập đường dẫn hoặc tên file cần lưu kết quả:\n");
+	wprintf(L"\nNhap duong dan hoac ten file can luu ket qua:\n");
 	fgetws(name, sizeof(name), stdin);
 	removeTheLastCharacter(name);
 	FILE* myFile;
 	myFile = _wfopen(name, L"w+");
 	if (myFile == NULL) {
-		wprintf(L"\nLỗi ghi file\n");
+		wprintf(L"\nLnLoioi ghi file\n");
 		exit(1);
 	}
 	fwprintf(myFile, L"%c = %0.3Lf\t%c = %0.3Lf", 'a', exp(X[0]), 'b', X[1]);
 	fclose(myFile);
-	wprintf(L"\nĐã ghi file thành công\n");
+	wprintf(L"\nDa ghi file thanh cong\n");
 }
 void display(List listX, List listY) {
 	int len = listX.last;
@@ -285,67 +285,67 @@ void display(List listX, List listY) {
 }
 void solutionStepSetails(List listX, List listY) {
 	int len = listX.last;
-	wprintf(L"Các bước giải gồm: \n");
-	wprintf(L"Quy định kí hiệu:  Sigma = '[' \n");
-	wprintf(L"Ban đầu ta có \n");
+	wprintf(L"Cac buoc giai gom: \n");
+	wprintf(L"Quy dinh ki hieu:  Sigma = '[' \n");
+	wprintf(L"Ban dau ta co \n");
 	display(listX, listY);
-	wprintf(L"Bước 1: \n");
-	wprintf(L"Lấy Logarit cơsố 10 hai vế: Lgy = lga + blgx \n");
-	wprintf(L"Đặt Y = lgy; A = lga; B = b; X = lgx \n");
-	wprintf(L"Ta đưa về dạng:\tY = A + BX\n\n");
+	wprintf(L"Buoc 1: \n");
+	wprintf(L"Lay Logarit co so 10 hai ve: Lgy = lga + blgx \n");
+	wprintf(L"Dat Y = lgy; A = lga; B = b; X = lgx \n");
+	wprintf(L"Ta dua ve dang:\tY = A + BX\n\n");
 	find(listX, listY);
 	logarithm(listX.Elements, listX.last);
 	logarithm(listY.Elements, listX.last);
 	display(listX, listY);
-	wprintf(L"Bước 2: \n");
-	wprintf(L"Tính [Xi : ");
+	wprintf(L"Buoc 2: \n");
+	wprintf(L"Tinh [Xi : ");
 	wprintf(L"[Xi = %0.3Lf\n", summation(listX.Elements, len));
-	wprintf(L"Tính [Xi^2 : ");
+	wprintf(L"Tinh [Xi^2 : ");
 	wprintf(L"[Xi^2 = %0.3Lf\n", sumOfSquares(listX.Elements, len));
-	wprintf(L"Tính [XiYi : ");
+	wprintf(L"Tinh [XiYi : ");
 	wprintf(L"[XiYi = %0.3Lf\n", multiplication(listX.Elements, listY.Elements, len));
-	wprintf(L"Tính [Yi : ");
+	wprintf(L"Tinh [Yi : ");
 	wprintf(L"[Yi = %0.3Lf\n\n", summation(listY.Elements, len));
-	wprintf(L"Bước 3: \n");
-	wprintf(L"Phương pháp bình phương bé nhất: A, B là nghiệm hệ phương trình\n");
+	wprintf(L"Buoc 3: \n");
+	wprintf(L"Phuong phap binh phuong be nhat: A, B la nghiem he phuong trinh\n");
 	wprintf(L"\tn*A + B*[Xi = [Yi \n");
 	wprintf(L"\t[Xi*A + B *[Xi^2 = [XiYi \n");
 	wprintf(L"<=>\n");
 	wprintf(L"\t%d*A + B*%0.3Lf = %0.3Lf \n", len, summation(listX.Elements, len), summation(listY.Elements, len));
 	wprintf(L"\t%0.3Lf*A + B*%0.3Lf = %0.3Lf \n", summation(listX.Elements, len), sumOfSquares(listX.Elements, len), multiplication(listX.Elements, listY.Elements, len));
-	wprintf(L"Giải hệ phương trình ta được: A = %0.3Lf,\tB = %0.3Lf \n\n", X[0], X[1]);
+	wprintf(L"Giai he phuong trinh ta duoc: A = %0.3Lf,\tB = %0.3Lf \n\n", X[0], X[1]);
 	wprintf(L"Suy ra: a = 10^A = %0.3Lf,\tb = B = %0.3Lf\n\n", pow(10, X[0]), X[1]);
 }
 void solutionStepSetails1(List listX, List listY) {
 	int len = listX.last;
-	wprintf(L"Các bước giải gồm: \n");
-	wprintf(L"Quy định kí hiệu:  Sigma = '[' \n");
-	wprintf(L"Ban đầu ta có \n");
+	wprintf(L"Cac buoc giai gom: \n");
+	wprintf(L"Quy dinh ki hieu:  Sigma = '[' \n");
+	wprintf(L"Ban dau ta co \n");
 	display(listX, listY);
-	wprintf(L"Bước 1: \n");
-	wprintf(L"Lấy Logarit hai vế: lny = lna + bx \n");
-	wprintf(L"Đặt Y = lny; A = lna; B = b; X = x \n");
-	wprintf(L"Ta đưa về dạng:\tY = A + BX\n\n");
+	wprintf(L"Buoc 1: \n");
+	wprintf(L"Lay Logarit hai ve: lny = lna + bx \n");
+	wprintf(L"Dat Y = lny; A = lna; B = b; X = x \n");
+	wprintf(L"Ta dua ve dang:\tY = A + BX\n\n");
 	find1(listX, listY);
 	logarithmE(listY.Elements, listX.last);
 	display(listX, listY);
-	wprintf(L"Bước 2: \n");
-	wprintf(L"Tính [Xi : ");
+	wprintf(L"Buoc 2: \n");
+	wprintf(L"Tinh [Xi : ");
 	wprintf(L"[Xi = %0.3Lf\n", summation(listX.Elements, len));
-	wprintf(L"Tính [Xi^2 : ");
+	wprintf(L"Tinh [Xi^2 : ");
 	wprintf(L"[Xi^2 = %0.3Lf\n", sumOfSquares(listX.Elements, len));
-	wprintf(L"Tính [XiYi : ");
+	wprintf(L"Tinh [XiYi : ");
 	wprintf(L"[XiYi = %0.3Lf\n", multiplication(listX.Elements, listY.Elements, len));
-	wprintf(L"Tính [Yi : ");
+	wprintf(L"Tinh [Yi : ");
 	wprintf(L"[Yi = %0.3Lf\n\n", summation(listY.Elements, len));
-	wprintf(L"Bước 3: \n");
-	wprintf(L"Phương pháp bình phương bé nhất: A, B là nghiệm hệ phương trình\n");
+	wprintf(L"Buoc 3: \n");
+	wprintf(L"Phuong phap binh phuong be nhat: A, B la nghiem he phuong trinh\n");
 	wprintf(L"\tn*A + B*[Xi = [Yi \n");
 	wprintf(L"\t[Xi*A + B *[Xi^2 = [XiYi \n");
 	wprintf(L"<=>\n");
 	wprintf(L"\t%d*A + B*%0.3Lf = %0.3Lf \n", len, summation(listX.Elements, len), summation(listY.Elements, len));
 	wprintf(L"\t%0.3Lf*A + B*%0.3Lf = %0.3Lf \n", summation(listX.Elements, len), sumOfSquares(listX.Elements, len), multiplication(listX.Elements, listY.Elements, len));
-	wprintf(L"Giải hệ phương trình ta được: A = %0.3Lf,\tB = %0.3Lf \n\n", X[0], X[1]);
+	wprintf(L"Giai he phuong trinh ta duoc: A = %0.3Lf,\tB = %0.3Lf \n\n", X[0], X[1]);
 	wprintf(L"Suy ra: a = e^A = %0.3Lf,\tb = B = %0.3Lf\n\n", exp(X[0]), X[1]);
 }
 lb summation(lb* A, int n) {
@@ -391,15 +391,15 @@ void gotoxy(short x, short y) {
 }
 void menu() {
 	wprintf(L"*****************************************************************\n");
-	wprintf(L"|\tCác chức năng của chương trình\t\t\t\t|\n");
-	wprintf(L"|1/ Đọc n, các phần tử của vector x, vector y từ file.\t\t|\n");
-	wprintf(L"|2/ Đọc n, các phần tử của vector x, vector y từ bàn phím.\t|\n");
-	wprintf(L"|3/ In kết quả hệ số a, b ra màn hình.\t\t\t\t|\n");
-	wprintf(L"|4/ Lưu kết quả hệ số a, b vào file.\t\t\t\t|\n");
-	wprintf(L"|5/ Xem chi tiết các bước giải.\t\t\t\t\t|\n");
-	wprintf(L"|6/ Kết thúc chương trình.\t\t\t\t\t|\n");
+	wprintf(L"|\tCac chuc nang cua chuong trinh\t\t\t\t|\n");
+	wprintf(L"|1/ Doc n, cac phan tu cua vector x, vector y tu file.\t\t|\n");
+	wprintf(L"|2/ Doc n, cac phan tu cua vector x, vector y tu ban phim.\t|\n");
+	wprintf(L"|3/ In ket qua he so a, b ra man hinh.\t\t\t\t|\n");
+	wprintf(L"|4/ Luu ket qua he so a, b vao file.\t\t\t\t|\n");
+	wprintf(L"|5/ Xem chi tiet cac buoc giai.\t\t\t\t\t|\n");
+	wprintf(L"|6/ Ket thuc chuong trinh.\t\t\t\t\t|\n");
 	wprintf(L"*****************************************************************\n\n");
-	wprintf(L"*Vui lòng chọn chức năng bạn muốn thực hiện: ");
+	wprintf(L"*Vui long chon chuc nang ban muon thuc hien: ");
 }
 int checkList(List listX, List listY) {
 	int dx = 0, dy = 0;
